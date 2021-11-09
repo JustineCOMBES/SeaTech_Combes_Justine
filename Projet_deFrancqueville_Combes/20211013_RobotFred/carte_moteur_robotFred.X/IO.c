@@ -16,7 +16,9 @@ void InitIO()
     ANSELE = 0;
     ANSELF = 0;
     ANSELG = 0;
-
+    _ANSC0 = 1;
+    _ANSC11 = 1;
+    _ANSG9 = 1;
     //********** Configuration des sorties : _TRISxx = 0 ********************************
     // LED
     _TRISC10 = 0;  // LED Orange

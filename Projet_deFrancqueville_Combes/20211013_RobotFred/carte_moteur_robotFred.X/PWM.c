@@ -58,7 +58,7 @@ void PWMSetSpeed( float vitesseEnPourcents, int motor)
 
 
 void PWMUpdateSpeed() {
-    // Cette fonction est éappele sur timer et permet de suivre des rampes d ?éé a c c l r a t i o n
+    // Cette fonction est éappele sur timer et permet de suivre des rampes d accleration
     if (robotState.vitesseDroiteCommandeCourante < robotState.vitesseDroiteConsigne)
         robotState.vitesseDroiteCommandeCourante = Min(
             robotState.vitesseDroiteCommandeCourante + acceleration,
