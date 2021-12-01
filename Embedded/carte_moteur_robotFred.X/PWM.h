@@ -4,7 +4,7 @@
 #define MOTEUR_DROIT 0
 #define MOTEUR_GAUCHE 1
 #define PWMPER 30.0
-#define acceleration 1
+#define acceleration 35
 
 void InitPWM(void);
 //void PWMSetSpeed(float, int);
