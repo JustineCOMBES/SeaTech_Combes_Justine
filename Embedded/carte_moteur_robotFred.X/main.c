@@ -108,16 +108,18 @@ void OperatingSystemLoop(void) {
         unsigned char positionObstacle = PAS_D_OBSTACLE;
 		
 		// Distances
-        int distance = 40;
-		int D = robotState.distanceTelemetreDroit < distance;
+        int distance = 35;
+        int moyenneDistance = 40;
+        int petiteDistance = 15;
+		int D = robotState.distanceTelemetreDroit < moyenneDistance;
 		int M = robotState.distanceTelemetreCentre < distance;
-		int G = robotState.distanceTelemetreGauche < distance;
-		int FG = robotState.distanceTelemetreFullGauche < distance;
-		int FD = robotState.distanceTelemetreFullDroit < distance;
+		int G = robotState.distanceTelemetreGauche < moyenneDistance;
+		int FG = robotState.distanceTelemetreFullGauche < petiteDistance;
+		int FD = robotState.distanceTelemetreFullDroit < petiteDistance;
 		
         //Détermination de la position des obstacles en fonction des télémètres
 		
-		if(M||(D&&G)||(FD&&FG))
+		if(M||(D&&G))
 			positionObstacle = OBSTACLE_EN_FACE;
 		else if(D)
 			positionObstacle = OBSTACLE_A_DROITE;
