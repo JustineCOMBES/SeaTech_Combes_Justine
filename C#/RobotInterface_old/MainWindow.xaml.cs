@@ -16,8 +16,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-
-
 namespace RobotInterface
 {
     /// <summary>
@@ -45,20 +43,12 @@ namespace RobotInterface
 
         private void TimerAffichage_Tick(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
-            //for(int i =0;i< robot.byteListRcived.Count) { 
-           // byte message2 = robot.byteListRcived.Peek();
-            //TextBoxReception.Text.WriteLine(message2.ToString);
-            //}
+
         }
 
         private void SerialPort1_DataReceived(object sender, DataReceivedArgs e)
         {
             robot.receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
-            for(int i =0; i < e.Data.Length; i++) {
-                robot.byteListRcived.Enqueue(e.Data[i]);
-            }
-            
         }
 
         void SendMessage()
@@ -68,16 +58,16 @@ namespace RobotInterface
 
             serialPort1.WriteLine(message);
 
-            if (TextBoxReception.Text == "")
-            {
-                TextBoxReception.Text = TextBoxReception.Text + "Reçu : " + message;
-            }
-            
-            else
-            {
-                TextBoxReception.Text = TextBoxReception.Text + "\nReçu : " + message;
-            }
-            TextBoxEmission.Text = "";
+            //if (TextBoxReception.Text == "")
+            //{
+            //    TextBoxReception.Text = TextBoxReception.Text + "Reçu : " + message;
+            //}
+
+            //else
+            //{
+            //    TextBoxReception.Text = TextBoxReception.Text + "\nReçu : " + message;
+            //}
+            //TextBoxEmission.Text = "";
         }
 
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
@@ -85,49 +75,13 @@ namespace RobotInterface
             SendMessage();
 
             // gestion des couleurs
-           // if (buttonEnvoyer.Background == Brushes.RoyalBlue)
-             //   buttonEnvoyer.Background = Brushes.Beige;
-            //else
-              //  buttonEnvoyer.Background = Brushes.RoyalBlue;
+            if (buttonEnvoyer.Background == Brushes.RoyalBlue)
+                buttonEnvoyer.Background = Brushes.Beige;
+            else
+                buttonEnvoyer.Background = Brushes.RoyalBlue;
         }
 
-        private void buttonClear_Click(object sender, RoutedEventArgs e)
-        {
-            TextBoxReception.Clear();
 
-        
-        }
-
-        private void buttonTest_Click(object sender, RoutedEventArgs e)
-        {
-            byte[] bytelist = new byte[20];
-            for (int i = 0; i<20; i++)
-            {
-                bytelist[i] = (byte)(2 * i);
-
-                if (TextBoxReception.Text == "")
-                {
-                    TextBoxReception.Text = TextBoxReception.Text + "Reçu : " + bytelist[i];
-                }
-
-                else
-                {
-                    TextBoxReception.Text = TextBoxReception.Text + "\nReçu : " + bytelist[i];
-                }
-                TextBoxEmission.Text = "";
-            }
-            serialPort1.Write(bytelist,0,bytelist.Length);
-
-            
-        }
-    
-
-        private void TextBoxReception_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-                TextBoxReception.Clear();
-
-        }
 
         private void TextBoxEmission_KeyUp(object sender, KeyEventArgs e)
         {
