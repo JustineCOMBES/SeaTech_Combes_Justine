@@ -21,6 +21,7 @@ void InitIO()
     _ANSG9 = 1;
     _ANSE15 = 1;
     _ANSB1 = 1;
+    
     //********** Configuration des sorties : _TRISxx = 0 ********************************
     // LED
     _TRISC10 = 0;  // LED Orange
@@ -35,4 +36,6 @@ void InitIO()
 
     //********** Configuration des entrées : _TRISxx = 1 ********************************   
     
+    _U1RXR = 24 ; //Remappe l a RP 24 sur l ?entre Rx1
+    _RP36R = 0b00001 ; //Remappe la sortie Tx1 vers RP 36
 }

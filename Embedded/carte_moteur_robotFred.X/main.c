@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "robot.h"
 #include "main.h"
+#include "UART.h"
 
 int ADCValue0;
 int ADCValue1;
@@ -17,6 +18,8 @@ int ADCValue4;
 
 float vitesse = 30;
 unsigned char stateRobot;
+
+
 
 void OperatingSystemLoop(void) {
         switch (stateRobot) {
@@ -195,9 +198,9 @@ int main(void) {
     InitADC1();
 
 
-    // machine d'etat
+    // Initialisation UART
 
-    
+    InitUART();
 
 
 
@@ -250,7 +253,8 @@ int main(void) {
             else
                 LED_BLANCHE = 0;
         }
-
+SendMessageDirect((unsigned char*) "Bonjour" ,7);
+__delay32(40000000); 
         // test 
         //*
         //        if(ADCValue0 > 358){ // G

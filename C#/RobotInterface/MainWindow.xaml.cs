@@ -47,9 +47,15 @@ namespace RobotInterface
         {
             //throw new NotImplementedException();
             //for(int i =0;i< robot.byteListRcived.Count) { 
-           // byte message2 = robot.byteListRcived.Peek();
+            // byte message2 = robot.byteListRcived.Peek();
             //TextBoxReception.Text.WriteLine(message2.ToString);
             //}
+
+            while (robot.byteListRcived.Count() > 0)
+            {
+                var c = robot.byteListRcived.Dequeue();
+                TextBoxReception.Text = TextBoxReception.Text + " 0x" + c.ToString("X2");
+            }
         }
 
         private void SerialPort1_DataReceived(object sender, DataReceivedArgs e)
@@ -68,15 +74,15 @@ namespace RobotInterface
 
             serialPort1.WriteLine(message);
 
-            if (TextBoxReception.Text == "")
-            {
-                TextBoxReception.Text = TextBoxReception.Text + "Reçu : " + message;
-            }
+            //if (TextBoxReception.Text == "")
+            //{
+            //    TextBoxReception.Text = TextBoxReception.Text + "Reçu : " + message;
+            //}
             
-            else
-            {
-                TextBoxReception.Text = TextBoxReception.Text + "\nReçu : " + message;
-            }
+            //else
+            //{
+            //    TextBoxReception.Text = TextBoxReception.Text + "\nReçu : " + message;
+            //}
             TextBoxEmission.Text = "";
         }
 
