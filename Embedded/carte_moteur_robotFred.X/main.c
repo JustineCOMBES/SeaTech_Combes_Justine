@@ -9,6 +9,7 @@
 #include "robot.h"
 #include "main.h"
 #include "UART.h"
+#include "CB_TX1.h"
 
 int ADCValue0;
 int ADCValue1;
@@ -207,6 +208,14 @@ int main(void) {
     // Boucle Principale
     while (1) {
         // telemetre
+        int i;
+for(i=0;i<CB_RX1_GetDataSize();i++)
+{
+unsigned char c=CB_RX1_Get();
+SendMessage(&c,1);
+}
+__delay32(1000);
+    }
         if (ADCIsConversionFinished() == 1) {
             ADCClearConversionFinishedFlag();
             int* result = ADCGetResult();
@@ -253,8 +262,9 @@ int main(void) {
             else
                 LED_BLANCHE = 0;
         }
-SendMessageDirect((unsigned char*) "Bonjour" ,7);
-__delay32(40000000); 
+//SendMessageDirect((unsigned char*) "Bonjour" ,7);
+//__delay32(40000000); 
+        SendMessage("Bonjour" , 7);
         // test 
         //*
         //        if(ADCValue0 > 358){ // G
