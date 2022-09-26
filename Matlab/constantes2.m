@@ -18,4 +18,4 @@ Ti_PI = 3.3*Ziegler_L;
 
 Kp_P =  1/(Ziegler_L*Ziegler_R);
 
-Kpos=4;
+Kpos=6;

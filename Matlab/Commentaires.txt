@@ -1,0 +1,9 @@
+TD2 
+2.3) Consigne trapézoïdale de vitesse : avec une tension d'alim de 1V, on obtient des courants de 40A. 
+	Il faut donc fournir d'importants courants pour suivre la loi de commande.
+	En revanche, la sortie en intensité suit bien les variations de la consigne en trapèze. 
+
+3) 
+
+4) Sans saturateur, le système est stable jusqu'à Kpos = 37 malgré un temps de réponse exponentiel; Kpos = 38 est la première valeur entière instable.
+ Avec saturateur, le système est instable dès Kpos = 6.
