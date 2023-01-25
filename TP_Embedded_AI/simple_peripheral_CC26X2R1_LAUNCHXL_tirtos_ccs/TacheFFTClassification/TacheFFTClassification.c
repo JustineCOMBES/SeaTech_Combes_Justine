@@ -44,7 +44,7 @@ void FFTClassificationTrigger(float serie[]){
         FFTSerieReal[i] = serie[i];
     }
 //Lancement de la tache FFT Classification
-    Semaphore_post(semTacheFFTClassificationHandle);
+    //Semaphore_post(semTacheFFTClassificationHandle);
 }
 
 void TacheFFTClassification_CreateTask(void){
@@ -78,17 +78,17 @@ static void TacheFFTClassification_taskFxn(UArg a0, UArg a1)
         //On utilise FFTSerieReal comme serie des parties reelles du signal temporel
         //On utilise FFTSerieIm comme serie des parties imaginaires du signal temporel
         //que l’on met a 0
-        for (int i=0; i<256; i++)
-        {
-        FFTSerieIm[i] = 0;
-        }
+//        for (int i=0; i<256; i++)
+//        {
+//        FFTSerieIm[i] = 0;
+//        }
 
-        //Calcul de la FFT
-        fft(FFTSerieReal, FFTSerieIm, 8, 1);
-
-        //Extraction de la norme de la FFT dans FFTDataY
-        for (int i=0; i<256; i++)
-        FFTSerieReal[i] = sqrtf((FFTSerieReal[i]*FFTSerieReal[i]+FFTSerieIm[i]*FFTSerieIm[i]));
+//        //Calcul de la FFT
+//        fft(FFTSerieReal, FFTSerieIm, 8, 1);
+//
+//        //Extraction de la norme de la FFT dans FFTDataY
+//        for (int i=0; i<256; i++)
+//        FFTSerieReal[i] = sqrtf((FFTSerieReal[i]*FFTSerieReal[i]+FFTSerieIm[i]*FFTSerieIm[i]));
 
     }
 

@@ -135,7 +135,7 @@ void TacheADC_taskFxn(UArg a0, UArg a1){
         {
             indexFFT = 0;
             //On lance la tâche de calcul de la FFT et classification
-            //FFTClassificationTrigger(SerieNormeAccel);
+            FFTClassificationTrigger(SerieNormeAccel);
         }
 
         LCD_PrintState(0, 0, 0, 0, features, 6);
